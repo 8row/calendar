@@ -1,93 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/ress@2.0.1/dist/ress.min.css">
-    <style>
-    body {
-        font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
-        background-color: #f7feff;
-    }
-    .wrap {
-        padding: 1vh 3vw;
-    }
-    header {
-        overflow: hidden;
-    }
-    header #year {
-        float: left;
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-    header nav {
-        float: right;
-    }
-    #this-year, #this-month, #this-week, #today, #next, #prev{
-        display: inline-block;
-        border: #000 solid 1px;
-        padding: .1rem .4rem;
-        cursor: pointer;
-        background-color: #fff;
-        font-size: 0.8rem;
-        margin-left: 0.2rem;
-        /* font-weight: bold; */
-        font-family:"游ゴシック Medium",YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,sans-serif;
-    }
-    #this-year, #this-month, #today {
-        /* font-size: 0.8rem; */
-    }
-    table {
-        width: 29vw;
-        margin-bottom: .4vh;
-        background-color: #fff;
-    }
-    table, td{
-        border-collapse: collapse;
-        border: 1px solid #333;
-    }
-    td, th {
-        text-align: center;
-        font-size: .6rem;
-    }
-    caption{
-        text-align: left;
-        font-weight: bold;
-        font-size: .9rem;
-    }
-    #months{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    @media screen and (orientation: landscape) {
-        #months table {
-            width: 22vw;
-            margin-bottom: 1rem;
-        }
-        .wrap {
-            padding: 1.2rem;
-        }
-        header #year {
-            font-size: 2rem
-        }
-        caption{
-            font-size: 1.2rem;
-        }
-        td, th {
-            font-size: .8rem;
-        }
-        #this-year, #this-month, #this-week, #today, #next, #prev{
-            padding: .4rem 1rem;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-left: 1rem;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="wrap">
         <header>
@@ -118,7 +40,7 @@
             <div id="month12"></div>
         </main>
     </div>
-        
+
     <script>
         const thisYear = document.getElementById('this-year');
         const thisMonth = document.getElementById('this-month');
@@ -141,23 +63,23 @@
         let month10 = document.getElementById('month10');
         let month11 = document.getElementById('month11');
         let month12 = document.getElementById('month12');
-        thisYear.addEventListener('click', function(){
+        thisYear.addEventListener('click', function() {
             displayCalendar(displayYear = now.getFullYear());
         });
-        thisMonth.addEventListener('click', function(){
-        });
-        prev.addEventListener('click', function(){
+        thisMonth.addEventListener('click', function() {});
+        prev.addEventListener('click', function() {
             displayCalendar(displayYear -= 1);
         });
-        next.addEventListener('click', function(){
+        next.addEventListener('click', function() {
             displayCalendar(displayYear += 1);
         });
         const now = new Date();
         let displayYear = now.getFullYear();
         displayCalendar(displayYear);
-        function displayCalendar(setCalendarYear){
+
+        function displayCalendar(setCalendarYear) {
             let calendar = [];
-            for(let i=0; i<12; i++){
+            for (let i = 0; i < 12; i++) {
                 // month1.style.visibility = 'hidden';
                 // month2.style.visibility = 'hidden';
                 // month3.style.visibility = 'hidden';
@@ -174,7 +96,7 @@
                 year.innerHTML = calendar[i].getFullYear() + '年';
                 calendar[i].setDate(1);
                 calendar[i].setMonth(i);
-                switch(i){
+                switch (i) {
                     case 0:
                         month1.innerHTML = displayMonth(calendar[i]);
                         break;
@@ -213,27 +135,32 @@
                         break;
                 }
             }
-            function displayMonth(calendar){
+
+            function displayMonth(calendar) {
                 let calendarTable = '';
                 let calendarMonth = calendar.getMonth();
                 let calendarDay = calendar.getDay();
                 calendarTable += '<table><caption>' + (calendar.getMonth() + 1) + '月</caption>';
                 calendarTable += '<colgroup id="sun" style="background-color:orange;"></colgroup><colgroup id="mon"></colgroup><colgroup id="tus"></colgroup><colgroup id="wen"></colgroup><colgroup id="thu"></colgroup><colgroup id="fri"></colgroup><colgroup id="sat" style="background-color:aqua;"></colgroup>'
                 calendarTable += '<!--<thead><tr><th style="color:red;">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th style="color:blue;">土</th></tr></thead>--><tbody>';
-                for(let i=0; i<42; i++){
-                    if(i%7 === 0){ calendarTable += '<tr>'; }
-                    if(i >= calendarDay && calendarMonth === calendar.getMonth()){
-                        if(now.getFullYear() === calendar.getFullYear() && now.getMonth() === calendar.getMonth() && now.getDate() === calendar.getDate()){
+                for (let i = 0; i < 42; i++) {
+                    if (i % 7 === 0) {
+                        calendarTable += '<tr>';
+                    }
+                    if (i >= calendarDay && calendarMonth === calendar.getMonth()) {
+                        if (now.getFullYear() === calendar.getFullYear() && now.getMonth() === calendar.getMonth() && now.getDate() === calendar.getDate()) {
                             // 今日を表示
                             calendarTable += '<td style="font-weight:bold;color:red;background-color:yellow;">' + calendar.getDate() + '</td>';
-                        }else{
+                        } else {
                             calendarTable += '<td>' + calendar.getDate() + '</td>';
                         }
                         calendar.setTime(calendar.getTime() + 86400000);
-                    }else{
+                    } else {
                         calendarTable += '<td>　</td>';
                     }
-                    if(i%7 === 6){ calendarTable += '</tr>'; }
+                    if (i % 7 === 6) {
+                        calendarTable += '</tr>';
+                    }
                 }
                 calendarTable += '</tbody></table>';
                 console.log(calendarTable);
@@ -278,4 +205,5 @@
         }
     </script>
 </body>
+
 </html>

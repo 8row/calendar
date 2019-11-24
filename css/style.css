@@ -1,0 +1,106 @@
+body {
+    font-family: 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", HGS明朝E, メイリオ, Meiryo, serif;
+    background-color: #f7feff;
+}
+
+.wrap {
+    padding: 1vh 3vw;
+}
+
+header {
+    overflow: hidden;
+}
+
+header #year {
+    float: left;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+header nav {
+    float: right;
+}
+
+#this-year,
+#this-month,
+#this-week,
+#today,
+#next,
+#prev {
+    display: inline-block;
+    border: #000 solid 1px;
+    padding: .1rem .4rem;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 0.8rem;
+    margin-left: 0.2rem;
+    /* font-weight: bold; */
+    font-family: "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, sans-serif;
+}
+
+#this-year,
+#this-month,
+#today {
+    /* font-size: 0.8rem; */
+}
+
+table {
+    width: 29vw;
+    margin-bottom: .4vh;
+    background-color: #fff;
+}
+
+table,
+td {
+    border-collapse: collapse;
+    border: 1px solid #333;
+}
+
+td,
+th {
+    text-align: center;
+    font-size: .6rem;
+}
+
+caption {
+    text-align: left;
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+#months {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media screen and (orientation: landscape) {
+    #months table {
+        width: 22vw;
+        margin-bottom: 1rem;
+    }
+    .wrap {
+        padding: 1.2rem;
+    }
+    header #year {
+        font-size: 2rem
+    }
+    caption {
+        font-size: 1.2rem;
+    }
+    td,
+    th {
+        font-size: .8rem;
+    }
+    #this-year,
+    #this-month,
+    #this-week,
+    #today,
+    #next,
+    #prev {
+        padding: .4rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+}
