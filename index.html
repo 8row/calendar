@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -5,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calendar</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>calendar</title>
     <link rel="stylesheet" href="https://unpkg.com/ress@2.0.1/dist/ress.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,28 +18,30 @@
             <div id="year"></div>
             <nav>
                 <ul>
-                    <li id="this-year">今年</li>
-                    <li id="this-month">今月</li>
-                    <li id="this-week">今週</li>
-                    <li id="today">今日</li>
-                    <li id="prev">←</li>
-                    <li id="next">→</li>
+                    <li id="this-year" class="nav-btn">今年</li>
+                    <li id="this-month" class="nav-btn">今月</li>
+                    <li id="today" class="nav-btn">今日</li>
+                    <li id="prev" class="nav-btn">←</li>
+                    <li id="next" class="nav-btn">→</li>
                 </ul>
             </nav>
         </header>
-        <main id="months">
-            <div id="month1"></div>
-            <div id="month2"></div>
-            <div id="month3"></div>
-            <div id="month4"></div>
-            <div id="month5"></div>
-            <div id="month6"></div>
-            <div id="month7"></div>
-            <div id="month8"></div>
-            <div id="month9"></div>
-            <div id="month10"></div>
-            <div id="month11"></div>
-            <div id="month12"></div>
+        <main>
+            <div id="one-year" class="one-year fade active">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="one-month" class="one-month fade"></div>
         </main>
     </div>
 
