@@ -1,3 +1,4 @@
+@charset "utf-8";
 body {
     font-family: 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", HGS明朝E, メイリオ, Meiryo, serif;
     background-color: #f7feff;
@@ -14,34 +15,48 @@ header {
 header #year {
     float: left;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 header nav {
     float: right;
 }
 
-#this-year,
-#this-month,
-#this-week,
-#today,
-#next,
-#prev {
+.nav-btn {
     display: inline-block;
     border: #000 solid 1px;
-    padding: .1rem .4rem;
+    padding: 0 .3rem;
     cursor: pointer;
     background-color: #fff;
-    font-size: 0.8rem;
-    margin-left: 0.2rem;
-    /* font-weight: bold; */
+    font-size: 1rem;
+    margin-left: .2rem;
     font-family: "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, sans-serif;
 }
 
-#this-year,
-#this-month,
-#today {
-    /* font-size: 0.8rem; */
+main {
+    position: relative;
+}
+
+.one-year {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.one-year table {
+    cursor: pointer;
+}
+
+.one-month {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.one-month table {
+    width: 100%;
+    height: 70vh;
 }
 
 table {
@@ -62,45 +77,60 @@ th {
     font-size: .6rem;
 }
 
+.one-month th {
+    padding: .4rem 0;
+    font-size: 1rem;
+}
+
+.one-month td {
+    font-size: 1.4rem;
+}
+
 caption {
-    text-align: left;
+    /* text-align: left; */
     font-weight: bold;
     font-size: .9rem;
 }
 
-#months {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.one-month caption {
+    font-size: 1.6rem;
+}
+
+.fade {
+    z-index: -1;
+    opacity: 0;
+    transform: scale(.95, .95);
+    transition: .4s;
+}
+
+.fade.active {
+    z-index: 1;
+    opacity: 1;
+    transform: scale(1, 1);
 }
 
 @media screen and (orientation: landscape) {
-    #months table {
-        width: 22vw;
-        margin-bottom: 1rem;
-    }
     .wrap {
         padding: 1.2rem;
     }
     header #year {
         font-size: 2rem
     }
-    caption {
-        font-size: 1.2rem;
+    .nav-btn {
+        padding: .4rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+    .one-year table {
+        width: 22vw;
+        margin-bottom: 1rem;
     }
     td,
     th {
         font-size: .8rem;
     }
-    #this-year,
-    #this-month,
-    #this-week,
-    #today,
-    #next,
-    #prev {
-        padding: .4rem 1rem;
-        cursor: pointer;
-        font-size: 1rem;
-        margin-left: 1rem;
+    caption {
+        font-size: 1.2rem;
     }
 }
